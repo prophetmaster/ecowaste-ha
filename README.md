@@ -23,6 +23,12 @@ Par commune/carte configurée :
 | Coût total | CHF | somme de l'année en cours |
 | Nombre de dépôts | dépôts | sur l'année en cours |
 | Dernière pesée | kg | + attributs (date, conteneur, carte, flux, coût) |
+| Dernier dépôt (date) | horodatage | pour « jours depuis le dernier dépôt » |
+| Poids moyen par dépôt | kg | moyenne sur l'année |
+| Coût moyen par dépôt | CHF | moyenne sur l'année |
+| Prix moyen au kg | CHF/kg | tarif effectif facturé |
+| Poids ce mois-ci | kg | mois calendaire en cours |
+| Coût ce mois-ci | CHF | mois calendaire (+ attribut « depots ») |
 | Poids carte `<label>` | kg | un par carte détectée |
 | Coût carte `<label>` | CHF | un par carte détectée |
 
