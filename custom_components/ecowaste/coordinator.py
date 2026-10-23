@@ -82,8 +82,13 @@ class EcoWasteCoordinator(DataUpdateCoordinator):
     async def _async_update_data(self) -> dict:
         try:
             items = await self.client.async_get_waste()
+            account = await self.client.async_get_account()
         except EcoWasteAuthError as err:
             raise ConfigEntryAuthFailed(str(err)) from err
         except EcoWasteConnectionError as err:
             raise UpdateFailed(str(err)) from err
-        return _process(items)
+        data = _process(items)
+        data["balance"] = account.get("balance")
+        data["prepaid"] = account.get("prepaid")
+        data["balance_threshold"] = account.get("notificationBalanceThreshold")
+        return data

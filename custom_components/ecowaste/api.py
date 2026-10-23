@@ -87,6 +87,28 @@ class EcoWasteApiClient:
             resp.raise_for_status()
             return await resp.json()
 
+    async def async_get_account(self) -> dict:
+        """Infos du compte (dont le solde)."""
+        if not self._token:
+            await self.authenticate()
+        try:
+            return await self._get_account(retry=True)
+        except aiohttp.ClientError as err:
+            raise EcoWasteConnectionError(str(err)) from err
+
+    async def _get_account(self, retry: bool) -> dict:
+        headers = {"X-Client-Token": self._token, "Accept": "application/json"}
+        async with self._session.get(
+            f"{BASE_URL}/wipe/v1/account", headers=headers
+        ) as resp:
+            if resp.status == 401 and retry:
+                await self.authenticate()
+                return await self._get_account(retry=False)
+            if resp.status == 401:
+                raise EcoWasteAuthError("Jeton refusé (401)")
+            resp.raise_for_status()
+            return await resp.json()
+
 
 async def async_fetch_clients(session: aiohttp.ClientSession) -> list[dict]:
     """Liste publique des communes/clients du portail.

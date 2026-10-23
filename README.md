@@ -19,6 +19,7 @@ Par commune/carte configurée :
 
 | Capteur | Unité | Détail |
 |---|---|---|
+| Solde | CHF | solde du compte (+ attributs `prepaid`, `seuil_alerte`) |
 | Poids total | kg | somme de l'année en cours |
 | Coût total | CHF | somme de l'année en cours |
 | Nombre de dépôts | dépôts | sur l'année en cours |

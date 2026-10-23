@@ -27,6 +27,7 @@ async def async_setup_entry(
     coordinator = hass.data[DOMAIN][entry.entry_id]
 
     entities: list[SensorEntity] = [
+        EcoWasteBalance(coordinator, entry),
         EcoWasteTotalWeight(coordinator, entry),
         EcoWasteTotalAmount(coordinator, entry),
         EcoWasteCount(coordinator, entry),
@@ -138,6 +139,29 @@ class EcoWasteLast(_Base):
             "card": (last.get("card") or {}).get("label"),
             "container": (last.get("container") or {}).get("identifier"),
             "flow_type": (last.get("flowType") or {}).get("name"),
+        }
+
+
+class EcoWasteBalance(_Base):
+    _attr_name = "Solde"
+    _attr_native_unit_of_measurement = CURRENCY_CHF
+    _attr_device_class = SensorDeviceClass.MONETARY
+    _attr_state_class = SensorStateClass.MEASUREMENT
+    _attr_icon = "mdi:wallet"
+
+    def __init__(self, coordinator, entry):
+        super().__init__(coordinator, entry)
+        self._attr_unique_id = f"{entry.entry_id}_balance"
+
+    @property
+    def native_value(self):
+        return self._data.get("balance")
+
+    @property
+    def extra_state_attributes(self):
+        return {
+            "prepaid": self._data.get("prepaid"),
+            "seuil_alerte": self._data.get("balance_threshold"),
         }
 
 
