@@ -146,7 +146,9 @@ class EcoWasteBalance(_Base):
     _attr_name = "Solde"
     _attr_native_unit_of_measurement = CURRENCY_CHF
     _attr_device_class = SensorDeviceClass.MONETARY
-    _attr_state_class = SensorStateClass.MEASUREMENT
+    # monetary n'autorise pas 'measurement' : on utilise 'total' (valeur qui
+    # peut monter/descendre, avec statistiques long terme).
+    _attr_state_class = SensorStateClass.TOTAL
     _attr_icon = "mdi:wallet"
 
     def __init__(self, coordinator, entry):
