@@ -56,9 +56,10 @@ L'intégration vérifie les identifiants immédiatement en se connectant à l'AP
 
 ## Communes / entrées disponibles
 
-La commune se choisit dans une **liste déroulante** (tu peux aussi taper un slug
-manuellement si le tien diffère ou manque). Entrées relevées sur le portail
-(23.10.2026) :
+La commune se choisit dans une **liste déroulante chargée en direct** depuis le
+portail (`/public/api/clients`) — elle est donc toujours à jour. Si le portail
+est injoignable, l'intégration retombe sur la liste figée ci-dessous, et la
+saisie libre reste possible. Entrées relevées le 23.10.2026 :
 
 <details>
 <summary>59 communes suisses</summary>

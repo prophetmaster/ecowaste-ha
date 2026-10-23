@@ -86,3 +86,18 @@ class EcoWasteApiClient:
                 raise EcoWasteAuthError("Jeton refusé (401)")
             resp.raise_for_status()
             return await resp.json()
+
+
+async def async_fetch_clients(session: aiohttp.ClientSession) -> list[dict]:
+    """Liste publique des communes/clients du portail.
+
+    Utilisée par le config flow pour remplir le menu déroulant avec les vrais
+    `identifier`. Endpoint public (pas d'authentification).
+    """
+    async with session.get(
+        f"{BASE_URL}/public/api/clients",
+        headers={"Accept": "application/json"},
+        timeout=aiohttp.ClientTimeout(total=20),
+    ) as resp:
+        resp.raise_for_status()
+        return await resp.json()
