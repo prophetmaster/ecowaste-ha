@@ -1,3 +1,5 @@
+<img src="brands/ecowaste/icon.png" alt="EcoWaste" width="120" align="right">
+
 # EcoWaste (WIPE) — intégration Home Assistant
 
 Intégration personnalisée pour les portails de déchets **EcoWaste / WIPE**
