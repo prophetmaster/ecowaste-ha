@@ -7,13 +7,34 @@ import voluptuous as vol
 
 from homeassistant.config_entries import ConfigFlow, ConfigFlowResult
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
+from homeassistant.helpers.selector import (
+    SelectOptionDict,
+    SelectSelector,
+    SelectSelectorConfig,
+    SelectSelectorMode,
+)
 
 from .api import EcoWasteApiClient, EcoWasteAuthError, EcoWasteConnectionError
+from .communes import COMMUNES
 from .const import CONF_CARD, CONF_CLIENT, CONF_CODE, DOMAIN
+
+_COMMUNE_OPTIONS = [
+    SelectOptionDict(value=slug, label=name)
+    for slug, name in sorted(COMMUNES.items(), key=lambda kv: kv[1].lower())
+]
 
 DATA_SCHEMA = vol.Schema(
     {
-        vol.Required(CONF_CLIENT): str,
+        # Liste déroulante des communes connues, avec saisie libre possible
+        # (custom_value) si un slug diffère ou manque.
+        vol.Required(CONF_CLIENT): SelectSelector(
+            SelectSelectorConfig(
+                options=_COMMUNE_OPTIONS,
+                mode=SelectSelectorMode.DROPDOWN,
+                custom_value=True,
+                sort=True,
+            )
+        ),
         vol.Required(CONF_CARD): str,
         vol.Required(CONF_CODE): str,
     }

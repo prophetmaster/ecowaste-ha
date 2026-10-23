@@ -10,7 +10,7 @@
           "code": "Code / nom"
         },
         "data_description": {
-          "client": "Le « slug » visible dans l'URL du portail, ex. plateau-de-diesse (https://wipe.ecowaste.ch/client/plateau-de-diesse).",
+          "client": "Choisis ta commune dans la liste, ou tape le slug manuellement (il figure dans l'URL du portail, ex. plateau-de-diesse).",
           "card": "Le numéro de carte tel que vous le saisissez sur le portail.",
           "code": "Le code / nom demandé au 2e écran de connexion."
         }

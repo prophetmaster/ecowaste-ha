@@ -54,6 +54,39 @@ Trois champs :
 
 L'intégration vérifie les identifiants immédiatement en se connectant à l'API.
 
+## Communes / entrées disponibles
+
+La commune se choisit dans une **liste déroulante** (tu peux aussi taper un slug
+manuellement si le tien diffère ou manque). Entrées relevées sur le portail
+(23.10.2026) :
+
+<details>
+<summary>59 communes suisses</summary>
+
+Aclens, Alt St. Johann, Avenches, Bassins, Blonay, Bofflens, Bretigny, Chamblon,
+Davos, Echichens, EMS Le Chateau, Espace Santé Rennaz, Etagnières, Féchy,
+Genolier, Grande Béroche, Grande Dixence, Grandson, Granges-Paccot,
+Haut de Trembley, Hermenches, L'Abergement, La Brévine, La Côte-aux-Fées,
+La Tour-de-Peilz, Lavey, Lavigny, Lavigny (Institution), Le Pâquier,
+Les Verrières, Longirod, Lully, Migros Morat, Mont-sur-Rolle, Montagny,
+Montaubion-Chardonney, Montreux, Moudon, Nendaz, Nods, Oron, Paudex, Payerne,
+Plateau de Diesse, Pont-la-Ville, Préverenges, Rennaz, Romainmôtier, Saillon,
+salquenen, Sergey, Sion, Sottens, St-Martin, St-Maurice, Val-de-Travers, Varen,
+Vaux sur Morges, Vétroz
+</details>
+
+<details>
+<summary>16 autres entrées (test / démo / localités françaises)</summary>
+
+Biloba, Bresse et Saone, Cobas, EcoTest, Federer, Mapraz, Minervois, OptiWaste,
+Patrimonium, Pepperdine, Retripa, Rouen, Sablé-sur-Sarthe, Strategos, Sud Messin,
+Val de Fensch
+</details>
+
+> Le slug est déduit du nom (« Plateau de Diesse » → `plateau-de-diesse`). S'il
+> ne correspond pas côté serveur, le slug exact est dans l'URL du portail
+> `/client/<slug>` — et la liste déroulante accepte la saisie libre.
+
 ## Comment ça marche (technique)
 
 ```
