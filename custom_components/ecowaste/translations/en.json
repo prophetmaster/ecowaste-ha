@@ -1,0 +1,27 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "EcoWaste (WIPE)",
+        "description": "Credentials for your municipality's waste portal.",
+        "data": {
+          "client": "Municipality",
+          "card": "Card number",
+          "code": "Code / name"
+        },
+        "data_description": {
+          "client": "The slug shown in the portal URL, e.g. plateau-de-diesse (https://wipe.ecowaste.ch/client/plateau-de-diesse).",
+          "card": "The card number as you type it on the portal.",
+          "code": "The code / name asked on the 2nd login screen."
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Authentication refused: check municipality, card and code.",
+      "cannot_connect": "Could not connect to the EcoWaste portal."
+    },
+    "abort": {
+      "already_configured": "This card is already configured."
+    }
+  }
+}

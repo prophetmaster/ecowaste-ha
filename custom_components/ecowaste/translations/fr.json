@@ -1,0 +1,27 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "EcoWaste (WIPE)",
+        "description": "Identifiants du portail déchets de votre commune.",
+        "data": {
+          "client": "Commune",
+          "card": "Numéro de carte",
+          "code": "Code / nom"
+        },
+        "data_description": {
+          "client": "Le « slug » visible dans l'URL du portail, ex. plateau-de-diesse (https://wipe.ecowaste.ch/client/plateau-de-diesse).",
+          "card": "Le numéro de carte tel que vous le saisissez sur le portail.",
+          "code": "Le code / nom demandé au 2e écran de connexion."
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Authentification refusée : vérifiez la commune, la carte et le code.",
+      "cannot_connect": "Connexion impossible au portail EcoWaste."
+    },
+    "abort": {
+      "already_configured": "Cette carte est déjà configurée."
+    }
+  }
+}
